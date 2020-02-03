@@ -10,7 +10,7 @@ fn reverse(pair: (i32, bool)) -> (bool, i32) {
 }
 
 fn transpose(matrix: Matrix) -> Matrix {
-    let(a, b, c, d) = (matrix.0, matrix.1, matrix.2, matrix.3);
+    let (a, b, c, d) = (matrix.0, matrix.1, matrix.2, matrix.3);
 
     Matrix(a, c, b, d)
 }
