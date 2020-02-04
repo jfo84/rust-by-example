@@ -35,14 +35,17 @@ impl<T> Node<T> {
         data: T
     ) -> Option<Rc<RefCell<Node<T>>>> {
         let is_list = node.borrow().next.is_none();
+
         if is_list {
             // If the current node is the last one, create a new node,
             // set its prev pointer to the current node, and store it as
             // the node after the current one.
             let mut new_node = Node::new(data);
             new_node.prev = Some(Rc::downgrade(&node));
+
             let rc = Rc::new(RefCell::new(new_node));
             node.borrow_mut().next = Some(rc.clone());
+
             Some(rc)
         } else {
             // Not the last node, just continue traversing the list
